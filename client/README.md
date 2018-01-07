@@ -1,6 +1,10 @@
 # client
 
-> A Vue.js project
+> A Vue.js project to createa fullstack back-end (express, axios, sqllite) and front-end (vue & vuex) for a Tab tracking application.
+
+## Part 1 notations
+
+
 
 ## Build Setup
 
