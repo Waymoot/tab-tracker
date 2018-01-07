@@ -58,3 +58,4 @@ no solution just yet, and it seems to work fine so far.
 * [Sequelize ](http://docs.sequelizejs.com/)
 * [Writing cross-platform Node.js](https://shapeshed.com/writing-cross-platform-node/)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+* [Vuetify Material Component Framework](https://vuetifyjs.com/)
