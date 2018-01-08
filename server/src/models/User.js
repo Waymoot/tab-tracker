@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         })
         // Here we compare the password the user sends in to this function to the stored (hashed) password in the User model
         User.prototype.comparePassword = function (password) {
-            return bcrypt.compareAsync(password, this.password)
+            return bcrypt.compareAsync(password, this.password) // I still don't understand how bluebird added the compareAsync method to bcrypt...
         }
 
         return User

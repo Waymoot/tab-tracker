@@ -53,7 +53,7 @@ I also got errors from the latest sequelize saying:
 no solution just yet, and it seems to work fine so far.
 
 ## Part 3
-**Warning: There is a bug where bcrypt hashes the password "more than one time" when saving it**  
+**Warning: There is a bug (in sequelize hooks?) where they run multiple times so bcrypt hashes the password "more than one time" when saving it so you can never login**  
 So it is impossible to login _(yes even if you download the final code from Github)_.  
 [Link to comment on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a)  
 It involves removing two of the hooks from the User object as seen below.  
