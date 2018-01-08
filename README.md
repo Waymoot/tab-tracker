@@ -52,9 +52,39 @@ I also got errors from the latest sequelize saying:
 `sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators`  
 no solution just yet, and it seems to work fine so far.
 
+## Part 2
+**Warning: There is a bug where bcrypt hashes the password "more than one time" when saving it**
+So it is impossible to login (yes even if you download the final code from Github).
+The quick solution is [Link to commenter on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a) to remove two of the hooks from the User object as below.
+The code below works for me now.
+```javascript
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User',{
+        email: {
+            type: DataTypes.STRING,
+            unique: true
+        },
+        password: DataTypes.STRING
+        },{ // added so we can hash the password before it is stored in the db
+            hooks: {
+                // ### remove these two hooks or it will never work ###
+                // beforeCreate: hashPassword,
+                // beforeUpdate: hashPassword,
+                beforeSave: hashPassword
+            }
+        })
+        // Here we compare the password the user sends in to this function to the stored (hashed) password in the User model
+        User.prototype.comparePassword = function (password) {
+            console.log('Running comparePassword:', password, this.password)
+            return bcrypt.compareAsync(password, this.password)
+        }
+
+        return User
+    }
+```
 
 #### Links to sources I used during this project
-* [Github MarkDown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
+* [Github MarkDown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Sequelize ](http://docs.sequelizejs.com/)
 * [Writing cross-platform Node.js](https://shapeshed.com/writing-cross-platform-node/)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
