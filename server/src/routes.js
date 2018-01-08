@@ -4,5 +4,7 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 module.exports = (app) => {
     app.post('/register', 
         AuthenticationControllerPolicy.register,    // the policy is called as "express middleware" before we call the controller for validation
-        AuthenticationController.register)
+        AuthenticationController.register),
+        app.post('/login', 
+        AuthenticationController.login)
 }
