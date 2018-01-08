@@ -5,6 +5,7 @@ module.exports = (app) => {
     app.post('/register', 
         AuthenticationControllerPolicy.register,    // the policy is called as "express middleware" before we call the controller for validation
         AuthenticationController.register),
+        
         app.post('/login', 
         AuthenticationController.login)
 }

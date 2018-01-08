@@ -12,7 +12,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync()
+sequelize.sync()    // use ({force: true}) and save to reset all data in db
     .then(() => {
         app.listen(config.port)
         console.log(`Server started on port ${config.port}`)
