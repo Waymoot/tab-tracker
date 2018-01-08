@@ -52,11 +52,11 @@ I also got errors from the latest sequelize saying:
 `sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators`  
 no solution just yet, and it seems to work fine so far.
 
-## Part 2
-**Warning: There is a bug where bcrypt hashes the password "more than one time" when saving it**
-So it is impossible to login (yes even if you download the final code from Github).  
-[Link to commenter on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a)  
-The quick solution is  to remove two of the hooks from the User object as below.  
+## Part 3
+**Warning: There is a bug where bcrypt hashes the password "more than one time" when saving it**  
+So it is impossible to login _(yes even if you download the final code from Github)_.  
+[Link to comment on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a)  
+It involves removing two of the hooks from the User object as seen below.  
 The code below works for me now.  
 ```javascript
 module.exports = (sequelize, DataTypes) => {
@@ -66,15 +66,14 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
         },
         password: DataTypes.STRING
-        },{ // added so we can hash the password before it is stored in the db
+        },{
             hooks: {
-                // ### remove these two hooks or it will never work ###
+                // ### remove these two hooks or it will never work (at the moment) ###
                 // beforeCreate: hashPassword,
                 // beforeUpdate: hashPassword,
                 beforeSave: hashPassword
             }
         })
-        // Here we compare the password the user sends in to this function to the stored (hashed) password in the User model
         User.prototype.comparePassword = function (password) {
             return bcrypt.compareAsync(password, this.password)
         }
