@@ -54,9 +54,10 @@ no solution just yet, and it seems to work fine so far.
 
 ## Part 2
 **Warning: There is a bug where bcrypt hashes the password "more than one time" when saving it**
-So it is impossible to login (yes even if you download the final code from Github).
-The quick solution is [Link to commenter on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a) to remove two of the hooks from the User object as below.
-The code below works for me now.
+So it is impossible to login (yes even if you download the final code from Github).  
+[Link to commenter on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a)  
+The quick solution is  to remove two of the hooks from the User object as below.  
+The code below works for me now.  
 ```javascript
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User',{
@@ -75,7 +76,6 @@ module.exports = (sequelize, DataTypes) => {
         })
         // Here we compare the password the user sends in to this function to the stored (hashed) password in the User model
         User.prototype.comparePassword = function (password) {
-            console.log('Running comparePassword:', password, this.password)
             return bcrypt.compareAsync(password, this.password)
         }
 

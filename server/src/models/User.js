@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
         })
         // Here we compare the password the user sends in to this function to the stored (hashed) password in the User model
         User.prototype.comparePassword = function (password) {
-            console.log('Running comparePassword:', password, this.password)
             return bcrypt.compareAsync(password, this.password)
         }
 
