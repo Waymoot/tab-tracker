@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 ```
 ## Part 4
-No major issues. It is just a lot of typing and looking up what things so.
+No major issues. It is just a lot of typing and looking up what things do.
 Cody uses some fancy "tricks" he learnt like Object.keys and I still are not 100% sure what !! does (never used it).
 
 #### Links to sources I used during this project
