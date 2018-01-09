@@ -57,7 +57,7 @@ no solution just yet, and it seems to work fine so far.
 There are two fixes:
 1. Downgrade to "sequelize": "^4.8.0" as it is in the github project for Cody.  
 2. Update the code according to the text below.  
-So it is impossible to login _(yes even if you download the final code from Github)_.  
+ 
 [Link to comment on YouTube that posted the solution](https://www.youtube.com/watch?v=H6hM_5ilhqw&lc=UgyI8XHGZVvdeA0jV_p4AaABAg.8a6ppCH5pRB8aPi02ABW9a)  
 It involves removing two of the hooks from the User object as seen below.  
 The code below works for me now.  
@@ -84,6 +84,9 @@ module.exports = (sequelize, DataTypes) => {
         return User
     }
 ```
+## Part 4
+No major issues. It is just a lot of typing and looking up what things so.
+Cody uses some fancy "tricks" he learnt like Object.keys and I still are not 100% sure what !! does (never used it).
 
 #### Links to sources I used during this project
 * [Github MarkDown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
