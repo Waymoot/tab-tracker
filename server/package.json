@@ -21,7 +21,7 @@
     "joi": "^13.1.0",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
-    "sequelize": "^4.29.0",
+    "sequelize": "^4.8.0",
     "sqlite3": "^3.1.13"
   },
   "devDependencies": {
