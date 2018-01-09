@@ -8,7 +8,7 @@
         </v-toolbar-items>
         <v-toolbar-items>
             <v-btn flat dark
-                to="songs">
+                :to="{name: 'songs'}">
                 Browse
             </v-btn>
         </v-toolbar-items>
