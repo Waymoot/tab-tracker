@@ -26,14 +26,28 @@
                 v-if="!$store.state.isUserLoggedIn">
                 Sign up
             </v-btn>
+            <v-btn flat dark
+                @click="logout"
+                v-if="$store.state.isUserLoggedIn">
+                Log Out
+            </v-btn>
         </v-toolbar-items>
     </v-toolbar>
 </template>
 
 <script>
-    export default {
-        
+export default {
+  methods: {
+    logout () {
+      console.log("logging out!");
+      this.$store.dispatch('setToken', null);
+      this.$store.dispatch('setUser', null);
+      this.$router.push({
+        name: 'root'
+      });
     }
+  }
+};
 </script>
 
 <style scoped>
