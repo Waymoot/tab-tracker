@@ -88,6 +88,11 @@ module.exports = (sequelize, DataTypes) => {
 No major issues. It is just a lot of typing and looking up what things do.  
 Cody uses some fancy "tricks" he learnt like Object.keys and I still are not 100% sure what !! does (never used it).
 
+## Part 5
+Finaly getting the hang of some of the vue things. I paued and "did the work" before Cody and it worked most of the time.  
+Typing is important and also checking everything. Missing a comma and you end up regretting it.  
+Small moves... small moves...
+
 #### Links to sources I used during this project
 * [Github MarkDown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Sequelize ](http://docs.sequelizejs.com/)

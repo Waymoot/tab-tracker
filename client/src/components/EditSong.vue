@@ -42,7 +42,7 @@
                 required
                 :rules="[required]"
                 v-model="song.youtubeId">
-                </v-text-field>song.
+                </v-text-field>
             </panel>
         </v-flex>
         <v-flex xs8 class="ml-2">
@@ -67,8 +67,8 @@
             <v-btn
             dark
             class="blue"
-            @click="create">
-            Create Song
+            @click="save">
+            Save Song
             </v-btn>
 
 
@@ -99,7 +99,7 @@ import SongsService from '@/services/SongsService'
             }
         },
         methods: {
-            async create () {
+            async save () {
                 const areAllFieldsFilledIn = Object     // http://clubmate.fi/javascript-manipulating-objects-with-object-keys/
                 .keys(this.song)
                 .every(key => !!this.song[key])
@@ -107,16 +107,28 @@ import SongsService from '@/services/SongsService'
                     this.error = 'Please fill in all required fields'
                     return
                 }
-                // call API
+
+                const songId = this.$store.state.route.params.songId
                 try {
-                    await SongsService.post(this.song)
+                    await SongsService.put(this.song)
                     this.$router.push({
-                        name: 'songs'
+                        name: 'song',
+                        params: {
+                            songId: songId
+                        }
                     })
-                } catch (error) {
+                } catch(error) {
                     console.log(error)
-                    // this.error = error.response.data.error;
                 }
+
+            },
+        },
+        async mounted () {
+            try {
+                const songId = this.$store.state.route.params.songId
+                this.song = (await SongsService.show(songId)).data
+            } catch (error) {
+                console.log(error)
             }
         },
         components: {
