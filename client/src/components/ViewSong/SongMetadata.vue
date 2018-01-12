@@ -14,8 +14,10 @@
         <v-btn
           dark
           :to="{name: 'song-edit',
-            params: {
-              songId: song.id
+            params () {
+              return {
+                songId: song.id
+                }
             }}"
           class="cyan">
             Edit

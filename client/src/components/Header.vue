@@ -1,11 +1,15 @@
 <template>
     <v-toolbar fixed class="blue" dark>
-        <v-toolbar-items>
-            <v-btn flat dark
-            router to="/">
+        <v-toolbar-title class="mr-4">
+            <router-link flat dark
+            class="home"
+            tag='span'
+            :to="{
+                name: 'songs'
+            }">
                 TabTracker
-            </v-btn>
-        </v-toolbar-items>
+            </router-link>
+        </v-toolbar-title>
         <v-toolbar-items>
             <v-btn flat dark
                 :to="{name: 'songs'}">
@@ -41,7 +45,7 @@ export default {
       this.$store.dispatch('setToken', null);
       this.$store.dispatch('setUser', null);
       this.$router.push({
-        name: 'root'
+        name: 'songs'
       });
     }
   }
@@ -49,5 +53,7 @@ export default {
 </script>
 
 <style scoped>
-
+.home {
+  cursor: pointer;
+}
 </style>
