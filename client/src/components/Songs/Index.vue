@@ -2,7 +2,7 @@
     <v-layout column>
         <v-flex xs6 offset-xs3>
             <songs-search-panel />
-            <songs-panel/>
+            <songs-panel class="mt-2" />
         </v-flex>
     </v-layout>
 </template>
@@ -29,22 +29,5 @@ export default {
 </script>
 
 <style scoped>
-.song {
-    padding: 20px;
-    max-height: 300px;
-    overflow: hidden;
-}
-.song-title {
-    font-size: 30px;
-}
-.song-artist {
-    font-size: 24px;
-}
-.song-album {
-    font-size: 18px;
-}
-.album-image {
-    width: 70%;
-    margin: 0 auto;
-}
+
 </style>
