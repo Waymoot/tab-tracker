@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
   export default {
     data () {
       return {
@@ -16,7 +17,7 @@
       }
     },
     watch: {
-      search (value) {
+      search: _.debounce(async function (value) { // utility to wait until user is done typing
         const route = {
           name: 'songs'
         }
@@ -26,7 +27,7 @@
             }
         }
         this.$router.push(route)  
-    },
+    }, 500),
     '$route.query.search': {     // when mouting component this sets this.search into whatever is in the queryParams
       immediate: true,
       handler (value) {
