@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
         },{ // added so we can hash the password before it is stored in the db
             hooks: {
                 // ### with 4.29.3 of sequelize you need to remove these two hooks or it will never work (at the moment) ###
-                beforeCreate: hashPassword,
-                beforeUpdate: hashPassword,
+                // beforeCreate: hashPassword,
+                // beforeUpdate: hashPassword,
                 beforeSave: hashPassword
             }
         })
