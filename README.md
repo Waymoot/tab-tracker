@@ -93,6 +93,37 @@ Finaly getting the hang of some of the vue things. I paued and "did the work" be
 Typing is important and also checking everything. Missing a comma and you end up regretting it.  
 Small moves... small moves...
 
+## Part 6
+Spelling....  
+User - users - user it's important.  
+Also some "behind the scene" editing made me comfused.  
+This episode was the most hectic and confusing but it was also lots of refactoring.  
+
+Love the seed function but I messed up the json so could not login on the data and I ended up having to install a sqlite file reader to look in the database to see the problem (I thought the sequelize problem was causing the erorr and the password was hased wrong).
+
+## Part 7  
+I think I found a "bug" on the SongMetadata.vue after you reworked the bookmarks to be an array.  
+The wrong buttons are shown if the song does not have a bookmark because the buttons test for `v-if="isUserLoggedIn && !bookmark"`
+The `if (bookmarks.length)` test works if there are items returned, but if there are no bokmark an empty array is returned _(as seen in the video when Cody test the code)_. 
+So I simply added `else { this.bookmark = null }` and now when you enter a Song you never bookmarked the correct button is shown.
+```javascript
+try {
+    // rework this to work for bookmarks now returning an arrays
+    const bookmarks = (await BookmarksService.index({
+        songId: this.song.id,
+        userId: this.user.id
+    })).data
+    if (bookmarks.length) {
+        this.bookmark = bookmarks[0]
+    } else {
+        this.bookmark = null
+    }
+    } catch (error) {
+    console.log(error)
+}
+```
+
+
 #### Links to sources I used during this project
 * [Github MarkDown cheat-sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 * [Sequelize ](http://docs.sequelizejs.com/)
