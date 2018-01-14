@@ -122,6 +122,10 @@ try {
     console.log(error)
 }
 ```
+ctrl+shift+L to edit all selections at once is great!
+
+It is fun to stop the video everytime we know what we need to do and try it yourself first, and then watch if you were right _(or test it beforehand)_. Still it makes for a lot of typing and fixing bugs if you were wrong.
+
 
 
 #### Links to sources I used during this project
@@ -130,3 +134,4 @@ try {
 * [Writing cross-platform Node.js](https://shapeshed.com/writing-cross-platform-node/)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [Vuetify Material Component Framework](https://vuetifyjs.com/)
+* [Visual Studio Code Windows Keyboard Reference Sheet](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)

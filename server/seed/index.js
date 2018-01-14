@@ -2,13 +2,15 @@ const {
   sequelize,
   Song,
   User,
-  Bookmark
+  Bookmark,
+  History
   } = require('../src/models')
 const Promise = require('bluebird')
 
 const songs = require('./songs.json')
 const users = require('./users.json')
 const bookmarks = require('./bookmark.json')
+const histories = require('./histories.json')
 
 sequelize.sync({force: true})    // use ({force: true}) and save to reset all data in db
     .then(async function () {
@@ -28,6 +30,12 @@ sequelize.sync({force: true})    // use ({force: true}) and save to reset all da
       await Promise.all(
         bookmarks.map(bookmark => {
           Bookmark.create(bookmark)
+        })
+      )
+      // create histories for user 1
+      await Promise.all(
+        histories.map(history => {
+          History.create(history)
         })
       )
     })
