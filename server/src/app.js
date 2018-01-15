@@ -10,6 +10,9 @@ app.use(morgan('tiny'))
 app.use(bodyParser.json())
 app.use(cors())
 
+// passport login code
+require('./passport')
+
 require('./routes')(app)
 
 sequelize.sync({force: false})    // use ({force: true}) and save to reset all data in db
