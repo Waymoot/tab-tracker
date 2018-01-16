@@ -126,6 +126,7 @@ ctrl+shift+L to edit all selections at once is great!
 
 It is fun to stop the video everytime we know what we need to do and try it yourself first, and then watch if you were right _(or test it beforehand)_. Still it makes for a lot of typing and fixing bugs if you were wrong.
 
+And it is finally done!
 
 
 #### Links to sources I used during this project

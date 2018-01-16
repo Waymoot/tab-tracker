@@ -53,8 +53,7 @@ export default {
     // post to history that the user viewed this current song.
     if (this.isUserLoggedIn) {
       SongHistoryService.post({
-        songId: songId,
-        userId: this.user.id
+        songId: songId
       });
     }
   },
