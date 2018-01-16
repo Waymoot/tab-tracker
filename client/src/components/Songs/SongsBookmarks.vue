@@ -48,9 +48,7 @@ import BookmarksService from '@/services/BookmarksService'
   },
     async mounted() {
       if (this.isUserLoggedIn) {
-        this.bookmarks = (await BookmarksService.index({
-          userId: this.user.id
-        })).data
+        this.bookmarks = (await BookmarksService.index()).data
       }
     }
   }
